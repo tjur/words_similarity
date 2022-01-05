@@ -64,3 +64,21 @@ class Embeddings:
         # remove a phrase that is built from original words only
         candidates = [c for c in candidates if c[0] != " ".join(words)]
         return candidates[:topn]
+
+
+class KeywordExtractor:
+    """Base class for keyword extraction."""
+
+    _kw_extractor: Any
+
+    def __init__(self, *args, **kwargs):
+        """Init."""
+        pass
+
+    def extract_keywords(self, text: str, *args, **kwargs) -> list[tuple[float, str]]:
+        """
+        Extract keywords from the given text.
+
+        For each keyword return the score as well.
+        """
+        raise NotImplementedError
